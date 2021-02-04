@@ -1,0 +1,122 @@
+
+Git 是一个开源分布式的版本控制系统。
+	版本管理记录文件变化一种软件。
+
+	与SVN 区别：
+		git分布式。SVN中心式。
+		git内容按元数据方式存储，SVN是按文件。
+		分支不同。
+		版本号不同。
+		git内容完整性优异SVN
+
+git 仓库  
+
+	用于存放提交记录
+暂存区
+	临时存放被修改文件
+
+工作目录
+	被git 管理项目目录
+
+
+Git 使用前配置
+	配置提交人姓名：git config --global user.name 提交人姓名
+	配置提交人邮箱：git config --global user.email 提交人邮箱
+	查看git配置信息：git config --list
+
+	注：全局配置可以在用户目录下的%user%/.gitconfig中查看。
+
+	[user]
+	name = work_PC
+	email = vkbh123@126.com
+
+Git 提交步骤
+	git init 初始化git仓库
+	git status 查看文件状态
+	git add	文件 	追踪文件
+	git commit -m 提交信息 	向仓库中提交代码
+	git log	查看提交记录
+
+	-示例-
+		Administrator@First-PC MINGW64 /e/Git
+		$ git init
+		Initialized empty Git repository in E:/Git/.git/
+
+		Administrator@First-PC MINGW64 /e/Git (master)
+		$ git status
+		On branch master
+
+		No commits yet
+
+		Untracked files:
+		  (use "git add <file>..." to include in what will be committed)
+		        Git_config.txt
+		        index.html
+
+		nothing added to commit but untracked files present (use "git add" to track)
+
+
+
+Git 恢复记录
+
+	git checkout 文件		用暂存区中的文件覆盖工作目录中的文件
+	git rm --cached 文件		将文件从暂存区中删除
+	git reset --hard commitID	将仓库中的文件恢复并覆盖暂存区与工作目录
+
+
+
+Git 分支
+
+	git branch 查看分支
+	git branch 分支名称    创建分支
+	git checkout 分支名称  切换分支
+	git merge 来源分支 	合并分支
+	git branch -d 分支名称  删除分支
+		（分支被合并后才允许删除，-D 强制删除）
+
+
+	Administrator@First-PC MINGW64 /e/Git (master)
+	$ git branch
+	* master
+
+
+	主分支（master)
+		第一次高git仓库提交更新记录时自动产生的一个分支。
+
+
+	新建其他分支
+		例：git branch develop
+	切换分支
+		例：git checkout develop
+
+	合并分支
+		例：git merge develop
+			注：合并分支，回合并到的分支上做合并，例中开发分支合并到主分支 ，就是在主分支是操作。
+				即使合并分支了，开发分支还是存在的。
+
+	删除分支
+		例：git branch -d develop
+
+
+
+Git 多人协作
+	
+	github  仓库推送
+		https://github.com/Keninetuy/default.git
+
+		使用别名：
+		git remote add origin https://github.com/Keninetuy/default.git
+
+		git push 推送仓库地扯(或 别名) 分支名称
+		git push -u 推送仓库地扯(或 别名) 分支名称
+			-u 记住地扯、分支。下次推送时只需输入git push.
+
+		git remote add 远程仓库别名 远程仓库地扯
+
+		git remote remove 仓库别名  ---删除别名
+
+		git remote -v   ---查看别名
+
+		示例一：
+		git push -u origin master ----
+			-u 保存git密玛与帐户
